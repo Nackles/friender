@@ -1,6 +1,6 @@
 //require packages
-let express = require('express')
-let path = require('path')
+const express = require('express')
+const path = require('path')
 
 //declare variables
 let app = express();
@@ -11,10 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //require my routes
-// require('./app/routing/apiRoutes.js')(app)
+require('./app/routing/apiRoutes.js')(app)
 require('./app/routing/htmlRoutes.js')(app)
 //requiring the friends array
-require('./app/data/friends.js')
 
 
 //Hey! Listen!
