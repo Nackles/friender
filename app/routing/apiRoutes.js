@@ -1,6 +1,6 @@
 // ROUTES
 let path = require('path')
-let friends = require('../data/friends.js')
+require('../data/friends.js')
 
 //GET route - defaults to home.html
 module.exports = function (app) {
@@ -13,21 +13,36 @@ module.exports = function (app) {
 
     app.post("/api/friends", function (req, res) {
         let input = req.body;
-        console.log("input",input)
+        console.log("input", input)
         //friending logic
         //for each friend in friends
-        // for (let i = 0; i < friends.length; i++){
-            //TODO:
-        // }
-        //compare score arrays
-        //return the friend with the least score difference
+        // TODO:
+        var theMatch = input;
+        for (let i = 0; i < friends.length; i++) {
+            var checkme = input.scores;
+            var checkthem = friends[i].scores
+            console.log("checkme", checkme)
+            console.log("checkthem", checkthem)
 
-
-        console.log("friends", friends)
-        console.log("friends get route")
+            //an impossible score, the first friend will always be theMatch
+            var currWinner = 55;
+            var currDiff = 0;
+            for (let x = 0; x < checkme.length; x++) {
+                currDiff += checkme[i] - checkthem[i]
+            }
+            console.log("currDiff",currDiff)
+            //If friends[i] has a lower score than theMatch, they are the new match
+            if (currDiff > currWinner) {
+                theMatch = friends[i];
+                console.log("THE BIGGEST ONE HERE IMPORTANT", theMatch)
+            }
+        console.log("thematch",theMatch)
+        }
+        //TODO: SHOW THEM THEIR MATCH
+        
         //push last so you don't friend yourself :(
         friends.push(input)
-
+        console.log("friends push confirm: ", friends)
     });
 
 };
