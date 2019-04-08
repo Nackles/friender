@@ -18,7 +18,6 @@ module.exports = function (app) {
         //for each friend in friends
         // TODO:
         console.log("friends length", friends.friends.length)
-        var theMatch = input;
         for (let i = 0; i < friends.friends.length; i++) {
             var checkme = input.scores;
             var checkthem = friends.friends[i].scores
@@ -33,14 +32,15 @@ module.exports = function (app) {
             }
             console.log("currDiff", currDiff)
             //If friends[i] has a lower score than theMatch, they are the new match
-            if (currDiff > currWinner) {
+            if (currDiff < currWinner) {
                 theMatch = friends.friends[i];
                 console.log("THE BIGGEST ONE HERE IMPORTANT", theMatch)
             }
-            //TODO: SHOW THEM THEIR MATCH
-            console.log("thematch", theMatch)
         }
+        //TODO: SHOW THEM THEIR MATCH
 
+        console.log("The Match ", theMatch)
+        console.log("DATAAAA",res)
         //push last so you don't friend yourself :(
         friends.friends.push(input)
         console.log("friends push confirm: ", friends)
