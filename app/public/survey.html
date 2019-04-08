@@ -173,17 +173,18 @@
             </div>
             <br>
 
+            <a href='#modal1' id="clickme" class="btn orange modal-trigger"><i class="material-icons left">cloud</i>gibe
+                fren</a>
 
-            <div class="container">
-                <h2>Your match!</h2>
-                <a href='#clickme' id="clickme" class="btn orange modal-trigger"><i
-                        class="material-icons left">cloud</i>gibe fren</a>
-
-                <div id="clickme" class="modal">
-                    MODAL FOR RESULTS
+            <!-- Results modal -->
+            <div id="modal1" class="modal">
+                <div id="place-match" class="modal-content">
+                    <h4>Your match:</h4>
+                    <p>A bunch of text</p>
                 </div>
-
-
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Understood</a>
+                </div>
             </div>
 
             <br><br>
@@ -228,7 +229,11 @@
                 }
 
                 // Send survey results object imFriend to /api/friends POST route
-                $.post('api/friends', imFriend)
+                $.post('api/friends', imFriend, function () {
+                    
+                    //TODO: SHOW THEM THEIR MATCH
+                    alert("You were matched with: " + theMatch + " <br>With a total, very minimal difference score of", curDiff);
+                })
             })
         </script>
 
