@@ -7,7 +7,7 @@ module.exports = function (app) {
     //display json of friends
     app.get("/api/friends", function (req, res) {
         res.json(friendjs);
-        console.log("friends get route")
+        // console.log("friends get route")
     });
 
 
@@ -17,7 +17,11 @@ module.exports = function (app) {
         //friending logic
         //for each friend in friends
         // TODO:
-        console.log("friends length", friends.friends.length)
+        // console.log("friends length", friends.friends.length)
+        var theMatch;
+        var currWinner = 55;
+        var currDiff = 0;
+
         for (let i = 0; i < friends.friends.length; i++) {
             var checkme = input.scores;
             var checkthem = friends.friends[i].scores
@@ -25,8 +29,6 @@ module.exports = function (app) {
             console.log("checkthem", checkthem)
 
             //an impossible score, the first friend will always be theMatch
-            var currWinner = 55;
-            var currDiff = 0;
             for (let x = 0; x < checkme.length; x++) {
                 currDiff += checkme[i] - checkthem[i]
             }
@@ -34,16 +36,19 @@ module.exports = function (app) {
             //If friends[i] has a lower score than theMatch, they are the new match
             if (currDiff < currWinner) {
                 theMatch = friends.friends[i];
-                console.log("THE BIGGEST ONE HERE IMPORTANT", theMatch)
             }
+            matched = {
+                theMatch, currDiff
+            }
+            console.log(matched)
         }
         //TODO: SHOW THEM THEIR MATCH
 
-        console.log("The Match ", theMatch)
-        console.log("DATAAAA",res)
+        // console.log("The Match ", theMatch)
         //push last so you don't friend yourself :(
         friends.friends.push(input)
-        console.log("friends push confirm: ", friends)
+        // console.log("friends push confirm: ", friends)
+        res.send(matched);
     });
 
 };

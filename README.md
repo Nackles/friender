@@ -4,13 +4,11 @@ The goal of Friender is to create a simple friend-finding survey that would auto
 # How to use:
 Follow the Heroku Link and fill out the survey!
 
-# TODO: - Add more dummy friends.
-# TODO: - Make the results pop up into the modal.
-# TODO: - Make a better readme.
-# TODO: - Deploy to Heroku.
+# Known Bugs
+I did not add a validate checker for the survey, so there may be bugs if you don't fill out the numbers. Also, if you submit the survey with the same inputs more than once, you will definitely be your own best friend.
 
 # Github Link
 https://github.com/Nackles/friender
 
 # Heroku Link
-tbd (to be deployed)
+http:friendfriender.herokuapp.com

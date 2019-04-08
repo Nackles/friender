@@ -232,9 +232,10 @@
 
                 // Send survey results object imFriend to /api/friends POST route
                 $.post('api/friends', imFriend, function (data) {
-                    $("#match-name").text("<p>" + theMatch.name + "</p>")
-                    $("#match-image").attr("src", theMatch.photo)
-                    $("#match-closeness").val("<p>You had a closeness score of: " + currDiff)
+                    console.log(data)
+                    $("#match-name").html("<p>" + data.theMatch.name + "</p>")
+                    $("#match-image").attr("src", data.theMatch.photo)
+                    $("#match-closeness").html("<p>You had a closeness score of: " + data.currDiff+"</p>")
                 })
             })
         </script>
