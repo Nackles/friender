@@ -179,8 +179,10 @@
             <!-- Results modal -->
             <div id="modal1" class="modal">
                 <div id="place-match" class="modal-content">
-                    <h4>Your match:</h4>
-                    <p>A bunch of text</p>
+                    <h2>Your match:</h2>
+                    <h4 id="match-name"></h4><br>
+                    <img id="match-image"></img><br>
+                    <p id="match-closeness"></p>
                 </div>
                 <div class="modal-footer">
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Understood</a>
@@ -229,10 +231,10 @@
                 }
 
                 // Send survey results object imFriend to /api/friends POST route
-                $.post('api/friends', imFriend, function () {
-                    
-                    //TODO: SHOW THEM THEIR MATCH
-                    alert("You were matched with: " + theMatch + " <br>With a total, very minimal difference score of", curDiff);
+                $.post('api/friends', imFriend, function (data) {
+                    $("#match-name").text("<p>" + theMatch.name + "</p>")
+                    $("#match-image").attr("src", theMatch.photo)
+                    $("#match-closeness").val("<p>You had a closeness score of: " + currDiff)
                 })
             })
         </script>
